@@ -23,7 +23,8 @@
                     {{--$post->title ((($object --> proprity of obj[cloumn in db]))))--}}
                     <th scope="row">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->posted_by}}</td>
+                    {{-- @dd($post -> user, $post->user()); --}}
+                    <td>{{isset($post -> user)?$post -> user -> name:'NotFound'}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>
                         <a href="{{route('posts.show',2)}}" class="btn btn-secondary w-25 mx-2">View</a>

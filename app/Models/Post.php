@@ -14,5 +14,11 @@ class Post extends Model
         'description',
         'user_id'
     ];
+
+    # model relation --> join post model with user model
+    # posts belongs to user
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
 
