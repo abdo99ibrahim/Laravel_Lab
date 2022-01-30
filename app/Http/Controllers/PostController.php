@@ -68,6 +68,8 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
     public function destroy($post){
+        $singlePost = Post::findOrFail($post);
+        $singlePost->delete();
         return redirect()->route('posts.index');
     }
 }

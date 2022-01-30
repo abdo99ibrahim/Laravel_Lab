@@ -32,10 +32,14 @@
                     <td>
                         <a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-secondary w-25 mx-2">View</a>
                         <a href="{{route('posts.edit',['post'=>$post->id])}}" class="btn btn-success w-25 mx-2">Edit</a>
-                        {{-- <form style="display: inline;" action="{{route('posts.destroy,['post'=>$post->id]')}}">
-                            <button class="btn btn-primary w-25 mx-2" type="submit">Delete</button>
-                        </form> --}}
-                        <a href="{{route('posts.destroy',['post'=>$post->id])}}" class="btn btn-primary w-25 mx-2">Delete</a>
+
+                        <form style="display: inline;"method="POST" action="{{route('posts.destroy',['post'=>$post->id])}}">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-primary w-25 mx-2" type="submit" onclick="return confirm('Are You Sure?')">Delete</button>
+                        </form>
+
+                        {{-- <a href="{{route('posts.destroy',['post'=>$post->id])}}" class="btn btn-primary w-25 mx-2">Delete</a> --}}
                     </td>
                 </tr>
                 @endforeach
