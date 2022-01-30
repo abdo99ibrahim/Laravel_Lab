@@ -37,7 +37,7 @@ class PostController extends Controller
     public function update(){
         return redirect()->route('posts.index');
     }
-    public function destroy(){
-
+    public function destroy($postid){
+        return view('posts.index');
     }
 }

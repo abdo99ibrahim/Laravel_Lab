@@ -33,9 +33,9 @@ Route::get('/posts/create',[PostController::class,'create'])->name('posts.create
 # 3->submition هيستقبل ال
 Route::post('/posts',[PostController::class,'store'])->name('posts.store');
 # 4-> اظهر حد معين
-Route::get('/posts/{post}',[PostController::class,'show'])->name('posts.show');;
-Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('posts.edit');
+Route::get('/posts/{post}',[PostController::class,'show'])->name('posts.show');
 
 Route::put('/posts/{post}',[PostController::class,'update'])->name('posts.update');
-
 Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy');
+
+Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('posts.edit');

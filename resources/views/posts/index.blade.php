@@ -23,12 +23,12 @@
                     <td>{{$post['posted_by']}}</td>
                     <td>{{$post['created_at']}}</td>
                     <td>
-                        <a href="{{'posts/{post}'}}" class="btn btn-secondary w-25 mx-2">View</a>
-                        <a href="{{'posts/{post}/edit'}}" class="btn btn-success w-25 mx-2">Edit</a>
+                        <a href="{{route('posts.show',2)}}" class="btn btn-secondary w-25 mx-2">View</a>
+                        <a href="{{route('posts.edit',2)}}" class="btn btn-success w-25 mx-2">Edit</a>
                         {{-- <form style="display: inline;" action="{{route('posts.destroy,['post'=>$post->id]')}}">
                             <button class="btn btn-primary w-25 mx-2" type="submit">Delete</button>
                         </form> --}}
-                        <a href="{{'posts/{post}'}}" class="btn btn-primary w-25 mx-2">Delete</a>
+                        <a href="{{route('posts.destroy',2)}}" class="btn btn-primary w-25 mx-2">Delete</a>
                     </td>
                 </tr>
                 @endforeach
