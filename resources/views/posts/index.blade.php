@@ -16,12 +16,15 @@
                 </tr>
             </thead>
             <tbody>
+                {{-- $allposts -> type object [collection] --}}
                 @foreach ($allPosts as $post)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>{{$post['title']}}</td>
-                    <td>{{$post['posted_by']}}</td>
-                    <td>{{$post['created_at']}}</td>
+                    {{--@dd($post); return first object in db من نوع -> \Post class  --}}
+                    {{--$post->title ((($object --> proprity of obj[cloumn in db]))))--}}
+                    <th scope="row">{{$post->id}}</th>
+                    <td>{{$post->title}}</td>
+                    <td>{{$post->posted_by}}</td>
+                    <td>{{$post->created_at}}</td>
                     <td>
                         <a href="{{route('posts.show',2)}}" class="btn btn-secondary w-25 mx-2">View</a>
                         <a href="{{route('posts.edit',2)}}" class="btn btn-success w-25 mx-2">Edit</a>

@@ -3,26 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
+use App\Models\User;
 class PostController extends Controller
 {
     public function index(){
-        $allPosts =[
-            ['title'=> 'Learn PHP','posted_by'=>'Ahmed','created_at'=>'2020-01-25'],
-            ['title'=> 'Learn Laravel','posted_by'=>'Mohamed','created_at'=>'2020-04-15'],
-            ['title'=> 'Design Patterns','posted_by'=>'Galal','created_at'=>'2022-03-05'],
-        ];
+        // $allPosts = Post::where('title','Laravel')->get();
+        // Post model
+        $allPosts = Post::all();
+        // @dd($allPosts);
+        // get dv recoreds from posts table
+
         return view('posts.index',[
             'allPosts'=> $allPosts
         ]);
     }
     public function create(){
-        return view('posts.create');
+        // retrieve users
+        $users = User::all();
+        // @dd($users);
+        return view('posts.create',[
+            'users'=>$users
+        ]);
     }
     public function store(){
         // $val = redirect();
         # dd ---> pass any variable and now the result of this.
         // dd($val);
+
+        ###1) form submition محتاج اجيب الداتا الل بتجيلي من ال ---> request() global helper method -> chain arrow
+        $data = request()->all();
+        // @dd($data);
+
+        ###2) احفظ البيانات جوا الداتا بيز
+        Post::create([
+
+            'title'=>$data['title'],
+            'description'=>$data['description'],
+            'user_id'=>$data['posted_creater']
+
+            /* 'title'=>'PHP',
+             'description'=>'new description',*/
+        ]);
         return redirect()->route('posts.index');
     }
     public function show($postid){
@@ -38,6 +60,6 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
     public function destroy($postid){
-        return view('posts.index');
+        return redirect()->route('posts.index');
     }
 }
