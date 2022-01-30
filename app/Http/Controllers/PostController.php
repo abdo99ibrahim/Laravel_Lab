@@ -54,9 +54,17 @@ class PostController extends Controller
     }
     public function edit($post)
     {
-        return view('posts.edit');
+        $singlePost = Post::findOrFail($post);
+        return view('posts.edit',['post'=>$singlePost]);
+
     }
-    public function update(){
+    public function update($post,Request $request){
+        $singlePost = Post::findOrFail($post);
+        $singlePost->update([
+            'title'=>$request['title'],
+            'description'=>$request['description'],
+            'user_id'=>$request['posted_creater']
+        ]);
         return redirect()->route('posts.index');
     }
     public function destroy($post){
