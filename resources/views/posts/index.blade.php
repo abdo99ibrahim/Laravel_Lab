@@ -25,7 +25,10 @@
                     <td>{{$post->title}}</td>
                     {{-- @dd($post -> user, $post->user()); --}}
                     <td>{{isset($post -> user)?$post -> user -> name:'NotFound'}}</td>
-                    <td>{{$post->created_at}}</td>
+                    {{-- @dd($post->created_at); --}}
+                    {{-- @dd($post->created_at->format('Y-m-d')); --}}
+                    {{-- <td>{{$post->created_at->addDays(30)}}</td> --}}
+                    <td>{{$post->created_at->format('Y-m-d')}}</td>
                     <td>
                         <a href="{{route('posts.show',2)}}" class="btn btn-secondary w-25 mx-2">View</a>
                         <a href="{{route('posts.edit',2)}}" class="btn btn-success w-25 mx-2">Edit</a>
