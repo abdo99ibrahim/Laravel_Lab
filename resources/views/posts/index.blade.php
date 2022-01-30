@@ -30,12 +30,12 @@
                     {{-- <td>{{$post->created_at->addDays(30)}}</td> --}}
                     <td>{{$post->created_at->format('Y-m-d')}}</td>
                     <td>
-                        <a href="{{route('posts.show',2)}}" class="btn btn-secondary w-25 mx-2">View</a>
-                        <a href="{{route('posts.edit',2)}}" class="btn btn-success w-25 mx-2">Edit</a>
+                        <a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-secondary w-25 mx-2">View</a>
+                        <a href="{{route('posts.edit',['post'=>$post->id])}}" class="btn btn-success w-25 mx-2">Edit</a>
                         {{-- <form style="display: inline;" action="{{route('posts.destroy,['post'=>$post->id]')}}">
                             <button class="btn btn-primary w-25 mx-2" type="submit">Delete</button>
                         </form> --}}
-                        <a href="{{route('posts.destroy',2)}}" class="btn btn-primary w-25 mx-2">Delete</a>
+                        <a href="{{route('posts.destroy',['post'=>$post->id])}}" class="btn btn-primary w-25 mx-2">Delete</a>
                     </td>
                 </tr>
                 @endforeach

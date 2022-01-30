@@ -6,9 +6,9 @@
         Post Information
     </div>
     <div class="card-body">
-        <h5 class="card-title"><b>Title:-</b> Special title treatment</h5>
+        <h5 class="card-title"><b>Title:-</b> {{$post->title}}</h5>
         <b>Description:-</b>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">{{$post ->description}}</p>
     </div>
 </div>
 <div class="card mb-5">

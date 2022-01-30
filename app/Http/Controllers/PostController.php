@@ -15,7 +15,7 @@ class PostController extends Controller
         // get dv recoreds from posts table
 
         return view('posts.index',[
-            'allPosts'=> $allPosts
+            'allPosts'=> $allPosts,
         ]);
     }
     public function create(){
@@ -47,19 +47,19 @@ class PostController extends Controller
         ]);
         return redirect()->route('posts.index');
     }
-    public function show($postid){
-        // $singlePost = post::fint($postid);
-        // return view('posts.show',['postid'=>$singlePost]);
-        return view('posts.show');
+    public function show($post){
+        $singlePost = Post::findOrFail($post);
+        // @dd($singlePost);
+        return view('posts.show',['post'=>$singlePost]);
     }
-    public function edit($postid)
+    public function edit($post)
     {
         return view('posts.edit');
     }
     public function update(){
         return redirect()->route('posts.index');
     }
-    public function destroy($postid){
+    public function destroy($post){
         return redirect()->route('posts.index');
     }
 }
