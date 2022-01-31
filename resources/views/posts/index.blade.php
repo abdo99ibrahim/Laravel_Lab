@@ -12,6 +12,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Posted By</th>
                     <th scope="col">Created At</th>
+                    <th scope="col">post slug</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     {{-- @dd($post->created_at->format('Y-m-d')); --}}
                     {{-- <td>{{$post->created_at->addDays(30)}}</td> --}}
                     <td>{{$post->created_at->format('Y-m-d')}}</td>
+                    <td>{{$post->slug}}</td>
                     <td>
                         <a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-secondary w-25 mx-2">View</a>
                         <a href="{{route('posts.edit',['post'=>$post->id])}}" class="btn btn-success w-25 mx-2">Edit</a>

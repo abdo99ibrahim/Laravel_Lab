@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index(){
         // $allPosts = Post::where('title','Laravel')->get();
         // Post model
-        $allPosts = Post::paginate(3);
+        $allPosts = Post::paginate(5);
         // @dd($allPosts);
         // get dv recoreds from posts table
 
