@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
@@ -26,7 +27,7 @@ class PostController extends Controller
             'users'=>$users
         ]);
     }
-    public function store(){
+    public function store(StorePostRequest $request){
         // $val = redirect();
         # dd ---> pass any variable and now the result of this.
         // dd($val);
