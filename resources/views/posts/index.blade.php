@@ -45,4 +45,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="d-flex justify-content-center">
+            {{ $allPosts->links() }}
+        </div>
         @endsection
