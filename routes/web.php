@@ -27,20 +27,20 @@ Route::get('/hello', function () {
 });
 # excute action method from controller
 # 1-> show all blogs in table
-Route::get('/posts',[PostController::class,'index'])->name('posts.index');
+Route::get('/posts',[PostController::class,'index'])->name('posts.index')->middleware('auth');
 # 2-> show create form
-Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
+Route::get('/posts/create',[PostController::class,'create'])->name('posts.create')->middleware('auth');
 # 3->submition هيستقبل ال
-Route::post('/posts',[PostController::class,'store'])->name('posts.store');
+Route::post('/posts',[PostController::class,'store'])->name('posts.store')->middleware('auth');
 # 4-> اظهر حد معين
-Route::get('/posts/{post}',[PostController::class,'show'])->name('posts.show');
+Route::get('/posts/{post}',[PostController::class,'show'])->name('posts.show')->middleware('auth');
 
-Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('posts.edit');
+Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
 
-Route::put('/posts/{post}',[PostController::class,'update'])->name('posts.update');
+Route::put('/posts/{post}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
 
 
-Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy');
+Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy')->middleware('auth');
 
 Auth::routes();
 
