@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
@@ -59,7 +60,7 @@ class PostController extends Controller
         return view('posts.edit',['post'=>$singlePost]);
 
     }
-    public function update($post,Request $request){
+    public function update($post,UpdatePostRequest $request){
         $singlePost = Post::findOrFail($post);
         $singlePost->update([
             'title'=>$request['title'],
