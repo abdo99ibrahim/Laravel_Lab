@@ -47,8 +47,8 @@
                 @endforeach
             </tbody>
         </table>
-
-        <div class="d-flex justify-content-center">
+        <ul class="pagination"> {{ $allPosts->render() }} </ul>
+        {{-- <div class="d-flex justify-content-center">
             {{ $allPosts->links() }}
-        </div>
+        </div> --}}
         @endsection
