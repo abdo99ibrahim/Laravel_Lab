@@ -14,8 +14,8 @@ class AddGithubInformationToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('github_id');
-            $table->string('github_token');
+            $table->bigInteger('github_id')->nullable();
+            $table->string('github_token')->nullable();
             $table->string('github_refresh_token')->nullable();
         });
     }

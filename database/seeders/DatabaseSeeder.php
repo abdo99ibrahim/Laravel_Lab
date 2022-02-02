@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $faker = Faker::create();
         foreach (range(1,500) as $index){
             DB::table('users')->insert([
@@ -24,7 +25,9 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('secret'),
             ]);
         }
+        */
         $this->call([
+            UserSeeder::class,
             PostSeeder::class,
         ]);
     }

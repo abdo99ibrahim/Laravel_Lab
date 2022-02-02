@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\GithubController;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
@@ -50,34 +51,35 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/auth/redirect',[GithubController::class,'redirect'])->name('auth.github');
+Route::get('/auth/callback',[GithubController::class,'callback']);
 
+// # 1- redirect and open github link
+// Route::get('/auth/redirect', function () {
+//     return Socialite::driver('github')->redirect();
+// })->name('auth.github');
 
-# 1- redirect and open github link
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-})->name('auth.github');
+// Route::get('/auth/callback', function () {
+//     $githubUser = Socialite::driver('github')->user();
+//     // dd($githubUser);
+//     $user = User::where('github_id', $githubUser->id)->first();
+//     if ($user) {
+//         $user->update([
+//             'github_token' => $githubUser->token,
+//             'github_refresh_token' => $githubUser->refreshToken,
+//         ]);
+//     } else {
+//         $user = User::create([
+//             'name' => $githubUser->name,
+//             'email' => $githubUser->email,
+//             'password' => $githubUser->token,
+//             'github_id' => $githubUser->id,
+//             'github_token' => $githubUser->token,
+//             'github_refresh_token' => $githubUser->refreshToken,
+//         ]);
+//     }
 
-Route::get('/auth/callback', function () {
-    $githubUser = Socialite::driver('github')->user();
-    // dd($githubUser);
-    $user = User::where('github_id', $githubUser->id)->first();
-    if ($user) {
-        $user->update([
-            'github_token' => $githubUser->token,
-            'github_refresh_token' => $githubUser->refreshToken,
-        ]);
-    } else {
-        $user = User::create([
-            'name' => $githubUser->name,
-            'email' => $githubUser->email,
-            'password' => $githubUser->token,
-            'github_id' => $githubUser->id,
-            'github_token' => $githubUser->token,
-            'github_refresh_token' => $githubUser->refreshToken,
-        ]);
-    }
+//     Auth::login($user);
 
-    Auth::login($user);
-
-    return redirect('/posts');
-});
+//     return redirect('/posts');
+// });
